@@ -24,7 +24,7 @@ var upload = multer({ storage: storage })
 // end multer
 //end code for images
 // Railway project
-router.post('/createproject',upload.array('image',10), async (req, res) => {
+router.post('/createproject',upload.single('image'), async (req, res) => {
     console.log(req.files)
     const { projectname,owner,latitude,longitude,description,location,estimatedbudget,approvedbudget,utilzedbudget,remainingbudget} = req.body;
     const image = req.file.path
