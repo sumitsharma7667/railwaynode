@@ -4,14 +4,8 @@ const mongoose = require('mongoose');
 const app = express();
 const PORT = 4600;
 const {mongoUrl} =require('./keys');
-require('./models/user');
-require('./models/category');
-require('./models/orders')
-require('./models/Points')
 require('./models/Project')
-// require('./models/AddOn')
-require('./models/Manufacturer')
-const requireToken= require('./middleware/requireToken');
+// const requireToken= require('./middleware/requireToken');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}))
 const cors = require('cors');
@@ -20,9 +14,7 @@ app.use('/public', express.static('public'));
 const authRoutes = require('./routes/authRoutes');
 app.use(authRoutes);
 mongoose.connect(mongoUrl,{
-
      useNewUrlParser:true,
-    //  useUnifiedTopology: true
 })
 mongoose.connection.on('connected',()=>{
 console.log('connected to mongo db');
